@@ -58,43 +58,18 @@
   <profiles>
     <profile>
       <id>release</id>
-      <build>
-        <plugins>
-          <plugin>
-            <!-- Description: https://github.com/git-commit-id/git-commit-id-maven-plugin -->
-            <groupId>io.github.git-commit-id</groupId>
-            <artifactId>git-commit-id-maven-plugin</artifactId>
-            <version>5.0.0</version>
-            <executions>
-              <execution>
-                <id>Validate-Revision-Information</id>
-                <phase>validate</phase>
-                <goals>
-                  <goal>validateRevision</goal>
-                </goals>
-                <configuration>
-                  <validationProperties>
-                    <!-- verify that the current repository is not dirty -->
-                    <validationProperty>
-                      <name>Don't try to release if something has not yet been committed.</name>
-                      <value>${git.dirty}</value>
-                      <shouldMatchTo>false</shouldMatchTo>
-                    </validationProperty>
-                    <!--                  &lt;!&ndash; verify that the current commit has a tag &ndash;&gt;-->
-                    <!--                  <validationProperty>-->
-                    <!--                    <name>validating current commit has a tag</name>-->
-                    <!--                    <value>${git.closest.tag.commit.count}</value>-->
-                    <!--                    <shouldMatchTo>0</shouldMatchTo>-->
-                    <!--                  </validationProperty>-->
-                  </validationProperties>
-                  <validationShouldFailIfNoMatch>true</validationShouldFailIfNoMatch>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
+<!--      <properties>-->
+<!--        <altReleaseDeploymentRepository>sonatype::https://oss.sonatype.org/service/local/staging/deploy/maven2/</altReleaseDeploymentRepository>-->
+<!--        <altSnapshotDeploymentRepository>sonatype::https://oss.sonatype.org/content/repositories/snapshots</altSnapshotDeploymentRepository>-->
+<!--      </properties>-->
 
-        </plugins>
-      </build>
+      <distributionManagement>
+        <repository>
+          <id>Local</id>
+          <name>Local repo</name>
+          <url>file:///${project.basedir}/releaserepo</url>
+        </repository>
+      </distributionManagement>
     </profile>
 
   </profiles>
