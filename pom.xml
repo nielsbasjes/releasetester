@@ -103,7 +103,7 @@
   <scm>
     <url>https://github.com/nielsbasjes/xxx</url>
     <connection>scm:git:https://github.com/nielsbasjes/xxx.git</connection>
-    <developerConnection/>
+    <developerConnection>scm:git:origin</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
