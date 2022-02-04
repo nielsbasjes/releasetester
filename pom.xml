@@ -38,9 +38,8 @@
                     <tagNameFormat>v@{project.version}</tagNameFormat>
                     <releaseProfiles>release</releaseProfiles>
                     <preparationGoals>clean verify</preparationGoals>
-
-                    <!--          <scmCommentPrefix>#42${line.separator}</scmCommentPrefix>-->
-
+                    <pushChanges>false</pushChanges>
+<!--                    <scmCommentPrefix>#42${line.separator}</scmCommentPrefix>-->
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -101,7 +100,7 @@
     <scm>
         <url>https://github.com/nielsbasjes/xxx</url>
         <connection>scm:git:https://github.com/nielsbasjes/xxx.git</connection>
-        <developerConnection>scm:git:file:///.</developerConnection>
+        <developerConnection>scm:git:.</developerConnection>
     </scm>
 
 </project>
