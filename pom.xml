@@ -102,7 +102,7 @@
   <scm>
     <url>https://github.com/nielsbasjes/xxx</url>
     <connection>scm:git:https://github.com/nielsbasjes/xxx.git</connection>
-    <developerConnection>scm:git:origin</developerConnection>
+    <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
