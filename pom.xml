@@ -39,7 +39,9 @@
                     <releaseProfiles>release</releaseProfiles>
                     <preparationGoals>clean verify</preparationGoals>
                     <pushChanges>false</pushChanges>
-<!--                    <scmCommentPrefix>#42${line.separator}</scmCommentPrefix>-->
+                    <scmCommentPrefix>build:</scmCommentPrefix>
+                    <scmReleaseCommitComment>@{prefix} Version @{releaseLabel}</scmReleaseCommitComment>
+                    <scmDevelopmentCommitComment>@{prefix} Start development for next version</scmDevelopmentCommitComment>
                 </configuration>
                 <dependencies>
                     <dependency>
