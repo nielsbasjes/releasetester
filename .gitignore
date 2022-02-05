@@ -1,5 +1,9 @@
-#Maven
+# Maven
 dependency-reduced-pom.xml
+
+# Maven release plugin
+pom.xml.releaseBackup
+release.properties
 
 #Crashing eclipse
 hs_err_pid*.log
