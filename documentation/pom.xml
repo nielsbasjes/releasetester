@@ -52,7 +52,7 @@
 
   <profiles>
     <profile>
-      <id>release</id>
+      <id>PrepareForRelease</id>
       <build>
         <plugins>
           <plugin>
