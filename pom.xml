@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>nl.basjes.reltest</groupId>
@@ -8,7 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Releasetester: </name>
+  <name>Releasetester:</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -27,7 +28,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
 
 
   <build>
@@ -96,17 +96,43 @@
     </repository>
   </distributionManagement>
 
-<!--  <profiles>-->
-<!--    <profile>-->
-<!--      <id>release</id>-->
-<!--&lt;!&ndash;      <properties>&ndash;&gt;-->
-<!--&lt;!&ndash;        <altReleaseDeploymentRepository>sonatype::https://oss.sonatype.org/service/local/staging/deploy/maven2/</altReleaseDeploymentRepository>&ndash;&gt;-->
-<!--&lt;!&ndash;        <altSnapshotDeploymentRepository>sonatype::https://oss.sonatype.org/content/repositories/snapshots</altSnapshotDeploymentRepository>&ndash;&gt;-->
-<!--&lt;!&ndash;      </properties>&ndash;&gt;-->
+  <profiles>
+    <profile>
+      <id>release</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+              <execution>
+                <id>Set released version in website</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>${project.basedir}/release-scripts/UpdateReleasedVersionInWebsite.sh</executable>
+                  <arguments>
+                    <argument>${project.version}</argument>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
 
-<!--    </profile>-->
+        </plugins>
+      </build>
 
-<!--  </profiles>-->
+      <!--      <properties>-->
+      <!--        <altReleaseDeploymentRepository>sonatype::https://oss.sonatype.org/service/local/staging/deploy/maven2/</altReleaseDeploymentRepository>-->
+      <!--        <altSnapshotDeploymentRepository>sonatype::https://oss.sonatype.org/content/repositories/snapshots</altSnapshotDeploymentRepository>-->
+      <!--      </properties>-->
+
+    </profile>
+
+  </profiles>
 
   <scm>
     <url>https://github.com/nielsbasjes/xxx</url>
