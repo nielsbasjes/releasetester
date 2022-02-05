@@ -85,7 +85,7 @@
                   <goal>exec</goal>
                 </goals>
                 <configuration>
-                  <executable>UpdateReleasedVersionInWebsite.sh</executable>
+                  <executable>./UpdateReleasedVersionInWebsite.sh</executable>
                   <arguments>
                     <argument>${project.version}</argument>
                   </arguments>
