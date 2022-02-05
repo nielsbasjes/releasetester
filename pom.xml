@@ -88,24 +88,25 @@
     </plugins>
   </build>
 
-  <profiles>
-    <profile>
-      <id>release</id>
-<!--      <properties>-->
-<!--        <altReleaseDeploymentRepository>sonatype::https://oss.sonatype.org/service/local/staging/deploy/maven2/</altReleaseDeploymentRepository>-->
-<!--        <altSnapshotDeploymentRepository>sonatype::https://oss.sonatype.org/content/repositories/snapshots</altSnapshotDeploymentRepository>-->
-<!--      </properties>-->
+  <distributionManagement>
+    <repository>
+      <id>Local</id>
+      <name>Local repo</name>
+      <url>file:///home/nbasjes/workspace/Prive/releasetest/deployTest/</url>
+    </repository>
+  </distributionManagement>
 
-      <distributionManagement>
-        <repository>
-          <id>Local</id>
-          <name>Local repo</name>
-            <url>file:///home/nbasjes/workspace/Prive/releasetest/deployTest/</url>
-        </repository>
-      </distributionManagement>
-    </profile>
+<!--  <profiles>-->
+<!--    <profile>-->
+<!--      <id>release</id>-->
+<!--&lt;!&ndash;      <properties>&ndash;&gt;-->
+<!--&lt;!&ndash;        <altReleaseDeploymentRepository>sonatype::https://oss.sonatype.org/service/local/staging/deploy/maven2/</altReleaseDeploymentRepository>&ndash;&gt;-->
+<!--&lt;!&ndash;        <altSnapshotDeploymentRepository>sonatype::https://oss.sonatype.org/content/repositories/snapshots</altSnapshotDeploymentRepository>&ndash;&gt;-->
+<!--&lt;!&ndash;      </properties>&ndash;&gt;-->
 
-  </profiles>
+<!--    </profile>-->
+
+<!--  </profiles>-->
 
   <scm>
     <url>https://github.com/nielsbasjes/xxx</url>
