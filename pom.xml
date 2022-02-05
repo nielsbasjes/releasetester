@@ -76,6 +76,7 @@
           <scmCommentPrefix>ci(Release):</scmCommentPrefix>
           <scmReleaseCommitComment>ci(Release): Version @{releaseLabel}</scmReleaseCommitComment>
           <scmDevelopmentCommitComment>ci(Release): Start development for next version</scmDevelopmentCommitComment>
+          <scmRollbackCommitComment>ci(Release): Rollback the release of @{releaseLabel}</scmRollbackCommitComment>
         </configuration>
         <dependencies>
           <dependency>
