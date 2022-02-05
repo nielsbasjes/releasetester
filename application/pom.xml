@@ -35,7 +35,7 @@
   <scm>
     <url>https://github.com/nielsbasjes/xxx</url>
     <connection>scm:git:https://github.com/nielsbasjes/xxx.git</connection>
-    <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
+    <developerConnection>scm:git:.</developerConnection>
     <tag>HEAD</tag>
   </scm>
 

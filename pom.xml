@@ -144,6 +144,7 @@
   <modules>
     <module>library</module>
     <module>application</module>
+    <module>documentation</module>
   </modules>
 
 </project>
