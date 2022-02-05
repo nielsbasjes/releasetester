@@ -1,2 +1,8 @@
 #!/bin/bash
-echo -n ${1} > ./layouts/shortcodes/YauaaVersion.md
+if [[ "$1" == *"SNAPSHOT" ]]; then
+  echo "IGNORING version in documentation website: $1"
+else
+  echo "Setting version in documentation website: $1"
+  echo -n ${1} > ./layouts/shortcodes/YauaaVersion.md
+fi
+exit 0

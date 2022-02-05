@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-  <groupId>nl.basjes.reltest</groupId>
-  <artifactId>releasetester-parent</artifactId>
-  <version>1.0-SNAPSHOT</version>
+    <groupId>nl.basjes.reltest</groupId>
+    <artifactId>releasetester-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <packaging>pom</packaging>
 
@@ -65,40 +65,30 @@
           <skip>true</skip>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.0.0</version>
+        <executions>
+          <execution>
+            <id>Set released version in website</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>./UpdateReleasedVersionInWebsite.sh</executable>
+              <arguments>
+                <argument>${project.version}</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>PrepareForRelease</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.0.0</version>
-            <executions>
-              <execution>
-                <id>Set released version in website</id>
-                <phase>generate-resources</phase>
-                <goals>
-                  <goal>exec</goal>
-                </goals>
-                <configuration>
-                  <executable>./UpdateReleasedVersionInWebsite.sh</executable>
-                  <arguments>
-                    <argument>${project.version}</argument>
-                  </arguments>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-
-        </plugins>
-      </build>
-    </profile>
-
-  </profiles>
 
   <scm>
     <url>https://github.com/nielsbasjes/xxx</url>
