@@ -1,6 +1,3 @@
-#Antlr4
-gen
-
 #Maven
 dependency-reduced-pom.xml
 
@@ -19,12 +16,6 @@ target
 *.swp
 *~
 bin
-
-#Eclipse stuff
-.metadata
-.settings
-.classpath
-.project
 
 #IntelliJ stuff
 .idea
@@ -46,27 +37,3 @@ __*
 *.diff
 *.orig
 *.rej
-
-# Apache Pig logfiles
-pig_[1-9][0-9]*.log
-
-# Generated benchmark results
-benchmarks/results/*.txt
-benchmarks/*.csv
-benchmarks/*.dat
-
-# Local test files and scripts
-testfiles
-*.tar.gz
-
-# LibreOffice lock file
-.~lock.*
-
-# Accidentally generated documentation site
-_book
-node_modules
-docs/gitbook/gitbook-plugin-livereload/
-
-# Special stuff
-public_suffix_list.dat
-analyzer/pitest/
