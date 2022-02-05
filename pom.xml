@@ -100,7 +100,7 @@
         <repository>
           <id>Local</id>
           <name>Local repo</name>
-            <url>file:///${project.basedir}/releaserepo</url>
+            <url>file:///home/nbasjes/workspace/Prive/releasetest/deployTest/</url>
         </repository>
       </distributionManagement>
     </profile>
