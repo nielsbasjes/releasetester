@@ -67,11 +67,11 @@
 
           <allowReleasePluginSnapshot>true</allowReleasePluginSnapshot>
 
-          <preparationGoals>-PPrepareForRelease clean verify</preparationGoals>
+          <preparationGoals>clean verify</preparationGoals>
           <autoVersionSubmodules>true</autoVersionSubmodules>
           <tagNameFormat>v@{project.version}</tagNameFormat>
           <releaseProfiles>release</releaseProfiles>
-          <preparationProfiles>prepare</preparationProfiles>
+          <preparationProfiles>PrepareRelease</preparationProfiles>
           <preparationGoals>help:active-profiles clean verify</preparationGoals>
           <pushChanges>false</pushChanges>
           <remoteTagging>false</remoteTagging>
