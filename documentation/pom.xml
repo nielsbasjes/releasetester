@@ -79,7 +79,8 @@
             <configuration>
               <executable>sh</executable>
               <arguments>
-                <argument>echo -n ${project.version} > ./layouts/shortcodes/YauaaVersion.md</argument>
+                <argument>-c</argument>
+                <argument>echo -n ${project.version} > ./layouts/shortcodes/YauaaVersion.md ; exit 0</argument>
               </arguments>
             </configuration>
           </execution>
