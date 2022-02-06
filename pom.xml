@@ -89,17 +89,17 @@
         </dependencies>
       </plugin>
 
-      <plugin>
-        <artifactId>maven-scm-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>validate</phase>
-            <goals>
-              <goal>changelog</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+<!--      <plugin>-->
+<!--        <artifactId>maven-scm-plugin</artifactId>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <phase>validate</phase>-->
+<!--            <goals>-->
+<!--              <goal>changelog</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
 
     </plugins>
   </build>
