@@ -69,7 +69,7 @@
           <autoVersionSubmodules>true</autoVersionSubmodules>
           <tagNameFormat>v@{project.version}</tagNameFormat>
           <releaseProfiles>release</releaseProfiles>
-          <preparationGoals>clean verify</preparationGoals>
+          <preparationGoals>help:active-profiles clean verify</preparationGoals>
           <pushChanges>false</pushChanges>
           <remoteTagging>false</remoteTagging>
           <scmCommentPrefix>ci(Release):</scmCommentPrefix>
