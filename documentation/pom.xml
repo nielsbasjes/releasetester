@@ -15,7 +15,7 @@
   <url>https://niels.basjes.nl</url>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <documentationVersionFile>layouts/shortcodes/YauaaVersion.md</documentationVersionFile>
   </properties>
 
   <build>
@@ -80,7 +80,7 @@
               <executable>sh</executable>
               <arguments>
                 <argument>-c</argument>
-                <argument>echo -n ${project.version} > ${project.basedir}/layouts/shortcodes/YauaaVersion.md ; exit 0</argument>
+                <argument>echo -n ${project.version} &gt; ${project.basedir}/${documentationVersionFile} ; exit 0</argument>
               </arguments>
             </configuration>
           </execution>
@@ -93,11 +93,11 @@
         <version>2.0.0-M1</version>
         <executions>
           <execution>
-            <id>Add generated files</id>
+            <id>Add generated files to next commit</id>
             <phase>generate-resources</phase>
             <goals><goal>add</goal></goals>
             <configuration>
-              <includes>${project.basedir}/layouts/shortcodes/*</includes>
+              <includes>${documentationVersionFile}</includes>
             </configuration>
           </execution>
         </executions>
