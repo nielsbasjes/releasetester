@@ -70,6 +70,7 @@
           <tagNameFormat>v@{project.version}</tagNameFormat>
           <releaseProfiles>release</releaseProfiles>
           <preparationGoals>help:active-profiles clean verify</preparationGoals>
+          <activateProfiles>Something</activateProfiles>
           <pushChanges>false</pushChanges>
           <remoteTagging>false</remoteTagging>
           <scmCommentPrefix>ci(Release):</scmCommentPrefix>
