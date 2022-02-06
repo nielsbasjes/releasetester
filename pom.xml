@@ -62,14 +62,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.0.0-M5</version>
+        <version>3.0.0-M6-SNAPSHOT</version>
         <configuration>
           <preparationGoals>-PPrepareForRelease clean verify</preparationGoals>
           <autoVersionSubmodules>true</autoVersionSubmodules>
           <tagNameFormat>v@{project.version}</tagNameFormat>
           <releaseProfiles>release</releaseProfiles>
+          <preparationProfiles>prepare</preparationProfiles>
           <preparationGoals>help:active-profiles clean verify</preparationGoals>
-          <activateProfiles>Something</activateProfiles>
           <pushChanges>false</pushChanges>
           <remoteTagging>false</remoteTagging>
           <scmCommentPrefix>ci(Release):</scmCommentPrefix>
@@ -84,6 +84,18 @@
             <version>3.0.0-M5</version>
           </dependency>
         </dependencies>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-scm-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>changelog</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
     </plugins>
