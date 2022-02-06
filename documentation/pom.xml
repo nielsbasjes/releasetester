@@ -80,7 +80,7 @@
               <executable>sh</executable>
               <arguments>
                 <argument>-c</argument>
-                <argument>echo -n ${project.version} > ./layouts/shortcodes/YauaaVersion.md ; exit 0</argument>
+                <argument>echo -n ${project.version} > ${project.basedir}/layouts/shortcodes/YauaaVersion.md ; exit 0</argument>
               </arguments>
             </configuration>
           </execution>
@@ -97,7 +97,7 @@
             <phase>generate-resources</phase>
             <goals><goal>add</goal></goals>
             <configuration>
-              <includes>./layouts/shortcodes/YauaaVersion.md</includes>
+              <includes>${project.basedir}/layouts/shortcodes/*</includes>
             </configuration>
           </execution>
         </executions>
