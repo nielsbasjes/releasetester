@@ -13,6 +13,7 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven-scm.version>2.0.0-M2-SNAPSHOT</maven-scm.version>
   </properties>
 
   <dependencyManagement>
@@ -79,12 +80,20 @@
           <scmReleaseCommitComment>ci(Release): Version @{releaseLabel}</scmReleaseCommitComment>
           <scmDevelopmentCommitComment>ci(Release): Start development for next version</scmDevelopmentCommitComment>
           <scmRollbackCommitComment>ci(Release): Rollback the release of @{releaseLabel}</scmRollbackCommitComment>
+          <projectVersionPolicyId>CCSemVerVersionPolicy</projectVersionPolicyId>
+          <projectVersionPolicyConfig>
+            {
+            "minor": ["^[a-zA-Z]+!(?:\\([a-zA-Z0-9_-]+\\))?: .*$", "^BREAKING CHANGE:.*$"],
+            "major": ["^feat(?:\\([a-zA-Z0-9_-]+\\))?: .*$"],
+            "versionTag": "^v([0-9]+(?:\\.[0-9]+(?:\\.[0-9]+)?)?)$"
+            }
+          </projectVersionPolicyConfig>
         </configuration>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.release</groupId>
-            <artifactId>maven-release-semver-policy</artifactId>
-            <version>3.0.0-M5</version>
+            <artifactId>maven-release-ccsemver-policy</artifactId>
+            <version>3.0.0-M6-SNAPSHOT</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -93,7 +102,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-scm-plugin</artifactId>
-        <version>2.0.0-M2-SNAPSHOT</version>
+        <version>${maven-scm.version}</version>
         <executions>
           <execution>
             <phase>validate</phase>
@@ -101,11 +110,21 @@
               <goal>changelog</goal>
             </goals>
             <configuration>
+              <providerImplementations>
+                <git>jgit</git>
+              </providerImplementations>
               <limit>1000</limit>
               <!--                  <includes>${documentationVersionFile}</includes>-->
             </configuration>
           </execution>
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-jgit</artifactId>
+            <version>${maven-scm.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
 
     </plugins>
