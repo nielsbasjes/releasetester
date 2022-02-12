@@ -67,6 +67,7 @@
         <configuration>
 
           <allowReleasePluginSnapshot>true</allowReleasePluginSnapshot>
+          <allowTimestampedSnapshots>true</allowTimestampedSnapshots>
 
           <preparationGoals>clean verify</preparationGoals>
           <autoVersionSubmodules>true</autoVersionSubmodules>
