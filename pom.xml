@@ -14,6 +14,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven-scm.version>2.0.0-M2-SNAPSHOT</maven-scm.version>
+    <maven-release.version>3.0.0-M6-SNAPSHOT</maven-release.version>
   </properties>
 
   <dependencyManagement>
@@ -63,7 +64,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>3.0.0-M6-SNAPSHOT</version>
+        <version>${maven-release.version}</version>
         <configuration>
 
           <allowReleasePluginSnapshot>true</allowReleasePluginSnapshot>
@@ -71,7 +72,6 @@
 
           <preparationGoals>clean verify</preparationGoals>
           <autoVersionSubmodules>true</autoVersionSubmodules>
-          <tagNameFormat>v@{project.version}</tagNameFormat>
           <releaseProfiles>release</releaseProfiles>
           <preparationProfiles>PrepareRelease</preparationProfiles>
           <preparationGoals>help:active-profiles clean verify</preparationGoals>
@@ -81,24 +81,39 @@
           <scmReleaseCommitComment>ci(Release): Version @{releaseLabel}</scmReleaseCommitComment>
           <scmDevelopmentCommitComment>ci(Release): Start development for next version</scmDevelopmentCommitComment>
           <scmRollbackCommitComment>ci(Release): Rollback the release of @{releaseLabel}</scmRollbackCommitComment>
+
+          <tagNameFormat>v@{project.version}</tagNameFormat>
           <projectVersionPolicyId>CCSemVerVersionPolicy</projectVersionPolicyId>
+
+          <!-- projectVersionPolicyConfig is JSon with 3 fields:  -->
+          <!-- versionTag: A regex with 1 capture group that MUST extract the project.version -->
+          <!-- minor and major: Both are an array of regexes that will be matched against all lines   -->
+          <!-- in the commit message.   -->
+          <!-- If a match is found the commit will trigger either a minor or major version increase   -->
+          <!-- instead of only a patch increase.  -->
           <projectVersionPolicyConfig>
-            {
-            "minor": ["^[a-zA-Z]+!(?:\\([a-zA-Z0-9_-]+\\))?: .*$", "^BREAKING CHANGE:.*$"],
-            "major": ["^feat(?:\\([a-zA-Z0-9_-]+\\))?: .*$"],
-            "versionTag": "^v([0-9]+(?:\\.[0-9]+(?:\\.[0-9]+)?)?)$"
-            }
+            <![CDATA[
+            <cCSemverConfig>
+              <versionTag>^v([0-9]+(?:\.[0-9]+(?:\.[0-9]+)?)?)$</versionTag>
+              <majorRules>
+                <majorRule>^[a-zA-Z]+!(?:\([a-zA-Z0-9_-]+\))?: .*$</majorRule>
+                <majorRule>^BREAKING CHANGE:.*$</majorRule>
+              </majorRules>
+              <minorRules>
+                <minorRule>^feat(?:\([a-zA-Z0-9_-]+\))?: .*$</minorRule>
+              </minorRules>
+            </cCSemverConfig>
+            ]]>
           </projectVersionPolicyConfig>
         </configuration>
         <dependencies>
           <dependency>
             <groupId>org.apache.maven.release</groupId>
             <artifactId>maven-release-ccsemver-policy</artifactId>
-            <version>3.0.0-M6-SNAPSHOT</version>
+            <version>${maven-release.version}</version>
           </dependency>
         </dependencies>
       </plugin>
-
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
