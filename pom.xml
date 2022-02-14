@@ -79,7 +79,7 @@
           <remoteTagging>false</remoteTagging>
           <scmCommentPrefix>ci(Release):</scmCommentPrefix>
           <scmReleaseCommitComment>ci(Release): Version @{releaseLabel}</scmReleaseCommitComment>
-          <scmDevelopmentCommitComment>ci(Release): Start development for next version</scmDevelopmentCommitComment>
+          <scmDevelopmentCommitComment>ci(Release): Start development for next version: @{project.version}</scmDevelopmentCommitComment>
           <scmRollbackCommitComment>ci(Release): Rollback the release of @{releaseLabel}</scmRollbackCommitComment>
 
           <tagNameFormat>v@{project.version}</tagNameFormat>
